@@ -1,0 +1,32 @@
+package luma.us.generics;
+
+import java.util.List;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import luma.us.basepage.BasePage;
+
+
+public class WaitHelper extends BasePage {
+	
+	public static void waitUntilElementToBeClickable(WebElement ele) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(ele));
+	}
+	
+	public static void waitVisibilityOfAllElements(List<WebElement> element) {
+		WebDriverWait waitForFormLabel = new WebDriverWait(driver, 30);
+		waitForFormLabel.until(ExpectedConditions.visibilityOfAllElements(element));
+	}
+	
+	public void waitUntilElementIsVisible(WebElement locator) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(locator));
+	}
+
+	public void waitUntilElementIsClickable(WebElement locator) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(locator));
+	}
+}
